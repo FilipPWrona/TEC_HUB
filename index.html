@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Elephant Company - Hub & Burza Mózgów</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-elephant"></i>
+                <h1>The Elephant Company</h1>
+            </div>
+            <div class="header-controls">
+                <div class="status-legend">
+                    <span class="legend-item">
+                        <span class="status-dot red"></span>
+                        W planach
+                    </span>
+                    <span class="legend-item">
+                        <span class="status-dot yellow"></span>
+                        W trakcie
+                    </span>
+                    <span class="legend-item">
+                        <span class="status-dot green"></span>
+                        Ukończone
+                    </span>
+                </div>
+                <button class="btn-primary" onclick="addNewIdea()">
+                    <i class="fas fa-plus"></i>
+                    Nowy pomysł
+                </button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-btn active" onclick="showSection('all')">
+                <i class="fas fa-home"></i>
+                Wszystkie projekty
+            </button>
+            <button class="nav-btn blue" onclick="showSection('blue')">
+                <i class="fas fa-flask"></i>
+                Blue Elephant
+            </button>
+            <button class="nav-btn green" onclick="showSection('green')">
+                <i class="fas fa-leaf"></i>
+                Green Elephant
+            </button>
+            <button class="nav-btn black" onclick="showSection('black')">
+                <i class="fas fa-tshirt"></i>
+                Black/White Elephant
+            </button>
+            <button class="nav-btn yellow" onclick="showSection('yellow')">
+                <i class="fas fa-paw"></i>
+                Yellow Elephant
+            </button>
+            <button class="nav-btn pink" onclick="showSection('pink')">
+                <i class="fas fa-heart"></i>
+                Pink Elephant
+            </button>
+            <button class="nav-btn purple" onclick="showSection('purple')">
+                <i class="fas fa-pills"></i>
+                Purple Elephant
+            </button>
+            <button class="nav-btn red" onclick="showSection('red')">
+                <i class="fas fa-gamepad"></i>
+                Red Elephant
+            </button>
+            <button class="nav-btn orange" onclick="showSection('orange')">
+                <i class="fab fa-bitcoin"></i>
+                Orange Elephant
+            </button>
+            <button class="nav-btn gold" onclick="showSection('gods')">
+                <i class="fas fa-cross"></i>
+                God's Servant
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- All Projects Section -->
+            <section id="all-section" class="section active">
+                <div class="section-header">
+                    <h2>Wszystkie projekty</h2>
+                    <div class="section-stats">
+                        <span class="stat">
+                            <span class="stat-number" id="total-projects">9</span>
+                            <span class="stat-label">Projektów</span>
+                        </span>
+                        <span class="stat">
+                            <span class="stat-number" id="completed-projects">0</span>
+                            <span class="stat-label">Ukończonych</span>
+                        </span>
+                        <span class="stat">
+                            <span class="stat-number" id="progress-percentage">0%</span>
+                            <span class="stat-label">Postęp</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card blue" data-project="blue">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The Blue Elephant</h3>
+                        <p>Chemia Przemysłowa i Laboratoryjna</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/6 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('blue')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+
+                    <div class="project-card green" data-project="green">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The Green Elephant</h3>
+                        <p>Ekologia i produkty zero-waste</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/3 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('green')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+
+                    <div class="project-card black" data-project="black">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The Black/White Elephant</h3>
+                        <p>Merch i Lifestyle</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/4 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('black')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+
+                    <div class="project-card yellow" data-project="yellow">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-paw"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The Yellow Elephant</h3>
+                        <p>Zwierzęta i wsparcie schronisk</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/3 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('yellow')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+
+                    <div class="project-card pink" data-project="pink">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The Pink Elephant</h3>
+                        <p>Beauty i kosmetyki</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/0 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('pink')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+
+                    <div class="project-card purple" data-project="purple">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The Purple Elephant</h3>
+                        <p>Suplementy diety</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/0 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('purple')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+
+                    <div class="project-card red" data-project="red">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The Red Elephant</h3>
+                        <p>Gaming i akcesoria dla graczy</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/0 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('red')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+
+                    <div class="project-card orange" data-project="orange">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fab fa-bitcoin"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The Orange Elephant</h3>
+                        <p>Bitcoin i kryptowaluty</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/0 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('orange')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+
+                    <div class="project-card gold" data-project="gods">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-cross"></i>
+                            </div>
+                            <div class="project-status">
+                                <button class="status-btn red active" onclick="changeStatus(this, 'red')"></button>
+                                <button class="status-btn yellow" onclick="changeStatus(this, 'yellow')"></button>
+                                <button class="status-btn green" onclick="changeStatus(this, 'green')"></button>
+                            </div>
+                        </div>
+                        <h3>The God's Servant Elephant</h3>
+                        <p>Projekt w fazie koncepcyjnej</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/0 produktów</span>
+                        </div>
+                        <button class="btn-enter" onclick="enterProject('gods')">
+                            <i class="fas fa-arrow-right"></i>
+                            Wejdź do projektu
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blue Elephant Section -->
+            <section id="blue-section" class="section project-section blue-theme">
+                <div class="section-header">
+                    <button class="back-btn" onclick="showSection('all')">
+                        <i class="fas fa-arrow-left"></i>
+                        Powrót
+                    </button>
+                    <h2><i class="fas fa-flask"></i> The Blue Elephant - Chemia Przemysłowa</h2>
+                    <button class="btn-primary" onclick="addTask('blue')">
+                        <i class="fas fa-plus"></i>
+                        Dodaj zadanie
+                    </button>
+                </div>
+
+                <div class="project-details">
+                    <div class="tasks-container">
+                        <div class="task-category">
+                            <h3>Produkty chemiczne</h3>
+                            <div class="tasks-list">
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-task-1" onchange="toggleTask(this)">
+                                        <label for="blue-task-1"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>1,4 BDO</h4>
+                                        <p>Badanie dostawców i regulacji prawnych</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-task-2" onchange="toggleTask(this)">
+                                        <label for="blue-task-2"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>DMSO</h4>
+                                        <p>Rozpuszczalnik organiczny - analiza rynku</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-task-3" onchange="toggleTask(this)">
+                                        <label for="blue-task-3"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Glikol propylenowy (PG) / Gliceryna roślinna (VG)</h4>
+                                        <p>Produkty dla przemysłu e-papierosów</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-task-4" onchange="toggleTask(this)">
+                                        <label for="blue-task-4"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Aceton Techniczny / Czysty</h4>
+                                        <p>Rozpuszczalnik przemysłowy</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-task-5" onchange="toggleTask(this)">
+                                        <label for="blue-task-5"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Alkohol izopropylowy (IPA) 99,9%</h4>
+                                        <p>Środek czyszczący i dezynfekujący</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-task-6" onchange="toggleTask(this)">
+                                        <label for="blue-task-6"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Woda demineralizowana</h4>
+                                        <p>Woda destylowana do zastosowań laboratoryjnych</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-category">
+                            <h3>Kwestie prawne i regulacyjne</h3>
+                            <div class="tasks-list">
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-legal-1" onchange="toggleTask(this)">
+                                        <label for="blue-legal-1"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Regulacje REACH i CLP</h4>
+                                        <p>Sprawdzenie czy BDO podlega szczególnym regulacjom</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-legal-2" onchange="toggleTask(this)">
+                                        <label for="blue-legal-2"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Karty Charakterystyki Substancji (SDS/MSDS)</h4>
+                                        <p>Uzyskanie kart dla każdego produktu</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-legal-3" onchange="toggleTask(this)">
+                                        <label for="blue-legal-3"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Projekt etykiet zgodnych z CLP</h4>
+                                        <p>Piktogramy zagrożeń, zwroty H i P</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-category">
+                            <h3>Magazynowanie i logistyka</h3>
+                            <div class="tasks-list">
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-storage-1" onchange="toggleTask(this)">
+                                        <label for="blue-storage-1"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Wymogi przechowywania</h4>
+                                        <p>Wentylacja, temperatura, zabezpieczenia</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-storage-2" onchange="toggleTask(this)">
+                                        <label for="blue-storage-2"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Certyfikowane opakowania</h4>
+                                        <p>Butelki i kanistry odporne chemicznie (HDPE)</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+
+                                <div class="task-item" data-status="red">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="blue-storage-3" onchange="toggleTask(this)">
+                                        <label for="blue-storage-3"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Umowy z kurierami</h4>
+                                        <p>InPost, DPD, DHL - przewóz substancji chemicznych</p>
+                                    </div>
+                                    <div class="task-status">
+                                        <button class="status-btn red active" onclick="changeTaskStatus(this, 'red')"></button>
+                                        <button class="status-btn yellow" onclick="changeTaskStatus(this, 'yellow')"></button>
+                                        <button class="status-btn green" onclick="changeTaskStatus(this, 'green')"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-sidebar">
+                        <div class="project-info">
+                            <h3>Informacje o projekcie</h3>
+                            <div class="info-item">
+                                <span class="info-label">Status:</span>
+                                <span class="info-value">W planach</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Postęp:</span>
+                                <span class="info-value">0%</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Zadania:</span>
+                                <span class="info-value">0/12 ukończonych</span>
+                            </div>
+                        </div>
+
+                        <div class="quick-actions">
+                            <h3>Szybkie akcje</h3>
+                            <button class="action-btn" onclick="openShop('blue')">
+                                <i class="fas fa-store"></i>
+                                Otwórz sklep Blue Elephant
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-file-alt"></i>
+                                Generuj raport
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-share"></i>
+                                Udostępnij projekt
+                            </button>
+                        </div>
+
+                        <div class="notes-section">
+                            <h3>Notatki</h3>
+                            <textarea placeholder="Dodaj notatki do projektu..." rows="6"></textarea>
+                            <button class="btn-save">Zapisz notatki</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other project sections would be similar but with different content -->
+            <!-- For brevity, I'll create placeholder sections -->
+            <section id="green-section" class="section project-section green-theme">
+                <div class="section-header">
+                    <button class="back-btn" onclick="showSection('all')">
+                        <i class="fas fa-arrow-left"></i>
+                        Powrót
+                    </button>
+                    <h2><i class="fas fa-leaf"></i> The Green Elephant - Ekologia</h2>
+                    <button class="btn-primary" onclick="addTask('green')">
+                        <i class="fas fa-plus"></i>
+                        Dodaj zadanie
+                    </button>
+                </div>
+                <div class="project-placeholder">
+                    <p>Sekcja w budowie - produkty zero-waste, woskowijki, biodegradowalne opakowania</p>
+                </div>
+            </section>
+
+            <!-- Add similar sections for other projects -->
+        </main>
+
+        <!-- Floating Action Button -->
+        <div class="fab" onclick="toggleFabMenu()">
+            <i class="fas fa-plus"></i>
+            <div class="fab-menu">
+                <button class="fab-item" onclick="addNewIdea()">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Nowy pomysł</span>
+                </button>
+                <button class="fab-item" onclick="exportData()">
+                    <i class="fas fa-download"></i>
+                    <span>Eksportuj dane</span>
+                </button>
+                <button class="fab-item" onclick="importData()">
+                    <i class="fas fa-upload"></i>
+                    <span>Importuj dane</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal for adding new ideas -->
+        <div id="ideaModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Dodaj nowy pomysł</h3>
+                    <button class="close-btn" onclick="closeModal('ideaModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="ideaForm">
+                        <div class="form-group">
+                            <label for="ideaTitle">Tytuł pomysłu</label>
+                            <input type="text" id="ideaTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ideaDescription">Opis</label>
+                            <textarea id="ideaDescription" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="ideaCategory">Kategoria</label>
+                            <select id="ideaCategory">
+                                <option value="blue">Blue Elephant</option>
+                                <option value="green">Green Elephant</option>
+                                <option value="black">Black/White Elephant</option>
+                                <option value="yellow">Yellow Elephant</option>
+                                <option value="pink">Pink Elephant</option>
+                                <option value="purple">Purple Elephant</option>
+                                <option value="red">Red Elephant</option>
+                                <option value="orange">Orange Elephant</option>
+                                <option value="gods">God's Servant Elephant</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ideaPriority">Priorytet</label>
+                            <select id="ideaPriority">
+                                <option value="low">Niski</option>
+                                <option value="medium">Średni</option>
+                                <option value="high">Wysoki</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeModal('ideaModal')">Anuluj</button>
+                    <button class="btn-primary" onclick="saveIdea()">Zapisz pomysł</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
