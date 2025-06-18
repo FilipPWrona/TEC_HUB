@@ -1,1 +1,1 @@
-# TEC_HUB
+# The Elephant Company - HUB
